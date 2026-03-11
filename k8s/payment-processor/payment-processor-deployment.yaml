@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: payment-processor
+  labels:
+    app: payment-processor
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: payment-processor
+  template:
+    metadata:
+      name: payment-processor
+      labels:
+        app: payment-processor
+    spec:
+      containers:
+        - name: payment-processor
+          image: andersonburga/payment-processor:latest
+          ports:
+             - containerPort: 9091
+          envFrom:
+            - configMapRef:
+                name: payment-processor-config
+      restartPolicy: Always
+      
