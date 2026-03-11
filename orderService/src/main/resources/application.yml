@@ -1,0 +1,29 @@
+server:
+  port: 9090
+
+spring:
+  application:
+    name: orderService
+  cloud:
+    azure:
+      storage:
+        queue:
+          account-name: azurestoragetest001
+          account-key: ${AZURE_STORAGE_KEY}
+          endpoint: https://azurestoragetest001.queue.core.windows.net/orders-queue
+          queue-name: orders-queue
+
+azure:
+  queue:
+    timeout-seconds: 5
+    retry-max-attempts: 3
+    retry-backoff-seconds: 2
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,prometheus
+  metrics:
+    tags:
+      application: order-service
