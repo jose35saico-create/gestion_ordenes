@@ -1,0 +1,50 @@
+spring:
+  application:
+    name: paymentProcessor
+
+  cloud:
+    azure:
+      storage:
+        queue:
+          account-name: azurestoragetest001
+          account-key: ${AZURE_STORAGE_KEY}
+          endpoint: https://azurestoragetest001.queue.core.windows.net/orders-queue
+          queue-name: orders-queue
+
+        blob:
+          account-name: azurestoragetest001
+          account-key: ${AZURE_STORAGE_KEY}
+          endpoint: https://azurestoragetest001.blob.core.windows.net/audits
+          container-name: audits
+
+      cosmos:
+        endpoint: https://azurecosmostest001.documents.azure.com:443/
+        key: ${AZURE_COSMOS_KEY}
+        database: OrdersDB
+        connection-mode: gateway
+
+server:
+  port: 9091
+
+azure:
+  queue:
+    timeout-seconds: 5
+    retry-max-attempts: 3
+    retry-backoff-seconds: 2
+  cosmos:
+    timeout-seconds: 5
+    retry-max-attempts: 3
+    retry-backoff-seconds: 2
+  blob:
+    timeout-seconds: 5
+    retry-max-attempts: 3
+    retry-backoff-seconds: 2
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,prometheus
+  metrics:
+    tags:
+      application: payment-processor
