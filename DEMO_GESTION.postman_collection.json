@@ -1,0 +1,39 @@
+{
+  "info": {
+    "_postman_id": "ee815e5d-87ae-4f61-8817-d52b7f0cc4ba",
+    "name": "DEMO_GESTION",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "28052099"
+  },
+  "item": [
+    {
+      "name": "orders",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"orderId\": \"ORD124\",\r\n  \"customerId\": \"CUS001\",\r\n  \"items\": [\r\n    {\r\n      \"productId\": \"PROD01\",\r\n      \"quantity\": 2\r\n    },\r\n    {\r\n      \"productId\": \"PROD02\",\r\n      \"quantity\": 1\r\n    }\r\n  ],\r\n  \"totalAmount\": 100.24\r\n}\r\n",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:9090/api/orders",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "9090",
+          "path": [
+            "api",
+            "orders"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
